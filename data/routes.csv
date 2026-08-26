@@ -1,0 +1,21 @@
+route_id,route_number,route_name,source,destination,distance_km,average_travel_time_min,operating_start,operating_end,status
+R01,59B,Route 1 (Synthetic),T. Nagar,Anna Nagar,33.0,101,05:00,23:00,ACTIVE
+R02,36M,Route 2 (Synthetic),Porur,Velachery,31.7,65,05:00,23:00,ACTIVE
+R03,19,Route 3 (Synthetic),Tambaram,Porur,15.0,67,05:00,23:00,ACTIVE
+R04,90,Route 4 (Synthetic),Anna Nagar,Porur,25.8,113,05:00,23:00,ACTIVE
+R05,67M,Route 5 (Synthetic),T. Nagar,Adyar,30.1,118,05:00,23:00,ACTIVE
+R06,19B,Route 6 (Synthetic),Tambaram,Egmore,23.0,54,05:00,23:00,ACTIVE
+R07,20B,Route 7 (Synthetic),Mylapore,Anna Nagar,22.3,47,05:00,23:00,ACTIVE
+R08,96,Route 8 (Synthetic),Velachery,OMR,14.5,111,05:00,23:00,ACTIVE
+R09,71A,Route 9 (Synthetic),OMR,Adyar,10.5,95,05:00,23:00,ACTIVE
+R10,52A,Route 10 (Synthetic),Adyar,T. Nagar,32.2,83,05:00,23:00,ACTIVE
+R11,33A,Route 11 (Synthetic),Tambaram,Anna Nagar,32.3,64,05:00,23:00,ACTIVE
+R12,40B,Route 12 (Synthetic),Porur,Tambaram,25.1,109,05:00,23:00,ACTIVE
+R13,39B,Route 13 (Synthetic),Velachery,Guindy,17.2,90,05:00,23:00,ACTIVE
+R14,82,Route 14 (Synthetic),Porur,Adyar,17.4,70,05:00,23:00,ACTIVE
+R15,1A,Route 15 (Synthetic),T. Nagar,Guindy,27.6,62,05:00,23:00,ACTIVE
+R16,11,Route 16 (Synthetic),Tambaram,Egmore,32.2,97,05:00,23:00,ACTIVE
+R17,92,Route 17 (Synthetic),Porur,T. Nagar,32.0,62,05:00,23:00,ACTIVE
+R18,57,Route 18 (Synthetic),Egmore,T. Nagar,29.1,43,05:00,23:00,ACTIVE
+R19,89M,Route 19 (Synthetic),Guindy,OMR,25.3,50,05:00,23:00,ACTIVE
+R20,50A,Route 20 (Synthetic),Velachery,T. Nagar,10.3,77,05:00,23:00,ACTIVE

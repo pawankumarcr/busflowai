@@ -1,0 +1,6 @@
+model_id,model_version,model_name,algorithm,training_date,dataset_size,feature_count,mae,rmse,r2_score,status
+M01,v1.0,Baseline RF,Random Forest,2024-10-01,25000,8,8.5,11.2,0.72,ARCHIVED
+M02,v1.1,Tuned RF,Random Forest,2024-11-15,30000,12,7.2,9.8,0.78,ARCHIVED
+M03,v1.2,Gradient Boosting,Gradient Boosting Regressor,2024-12-10,45000,14,6.1,8.4,0.84,ARCHIVED
+M04,v1.3,XGBoost Synthetic,XGBoost,2025-01-05,60000,15,5.5,7.6,0.87,ACTIVE
+M05,v2.0,Ensemble Net,Neural Network,2025-02-20,60000,18,5.0,6.9,0.9,IN_TRAINING

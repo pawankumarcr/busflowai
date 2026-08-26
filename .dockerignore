@@ -1,0 +1,16 @@
+.git
+.gitignore
+.gradle
+.vscode
+.idea
+build/
+bin/
+out/
+logs/
+*.log
+*.tmp
+.DS_Store
+Dockerfile
+docker-compose.yml
+README.md
+generate_synthetic_data.py

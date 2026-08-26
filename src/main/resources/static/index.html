@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BusFlow - Bus Stop Occupancy Predictor</title>
+    <!-- Google Fonts: Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Vanilla CSS -->
+    <link rel="stylesheet" href="css/style.css?v=14">
+    <!-- Leaflet Map CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+<body>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast hidden"></div>
+
+    <!-- ================= AUTH CONTAINER ================= -->
+    <div id="auth-container" class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="logo-wrapper">
+                    <i data-lucide="bus" class="logo-icon"></i>
+                </div>
+                <h2>BusFlow</h2>
+                <p>Bus Stop Occupancy Predictor</p>
+            </div>
+            
+            <!-- Tab Headers -->
+            <div class="auth-tabs">
+                <button id="tab-login" class="auth-tab active" onclick="switchAuthTab('login')">Login</button>
+                <button id="tab-register" class="auth-tab" onclick="switchAuthTab('register')">Register</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="login-username">Username</label>
+                    <div class="input-wrapper">
+                        <i data-lucide="user" class="input-icon"></i>
+                        <input type="text" id="login-username" placeholder="Enter username" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <div class="input-wrapper">
+                        <i data-lucide="lock" class="input-icon"></i>
+                        <input type="password" id="login-password" placeholder="Enter password" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary auth-submit-btn">
+                    <span>Sign In</span>
+                    <i data-lucide="arrow-right"></i>
+                </button>
+            </form>
+
+            <!-- Register Form -->
+            <form id="register-form" class="auth-form hidden" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label for="reg-username">Username</label>
+                    <div class="input-wrapper">
+                        <i data-lucide="user" class="input-icon"></i>
+                        <input type="text" id="reg-username" placeholder="Choose username" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">Email Address</label>
+                    <div class="input-wrapper">
+                        <i data-lucide="mail" class="input-icon"></i>
+                        <input type="email" id="reg-email" placeholder="Enter email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">Password</label>
+                    <div class="input-wrapper">
+                        <i data-lucide="lock" class="input-icon"></i>
+                        <input type="password" id="reg-password" placeholder="Create password" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="reg-role">Account Type</label>
+                    <div class="input-wrapper">
+                        <i data-lucide="users" class="input-icon"></i>
+                        <select id="reg-role" required>
+                            <option value="PASSENGER">Passenger</option>
+                            <option value="ADMIN">Administrator</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary auth-submit-btn">
+                    <span>Create Account</span>
+                    <i data-lucide="user-plus"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================= APP CONTAINER ================= -->
+    <div id="app-container" class="app-container hidden">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <i data-lucide="bus" class="brand-icon"></i>
+                <span>BusFlow</span>
+            </div>
+            
+            <div class="user-profile-badge">
+                <div class="user-avatar">
+                    <i data-lucide="user" class="avatar-icon"></i>
+                </div>
+                <div class="user-info">
+                    <span id="user-display-name" class="username">Guest</span>
+                    <span id="user-display-role" class="role-badge">Role</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <!-- Admin Navigation -->
+                <div id="nav-admin-section" class="nav-section hidden">
+                    <div class="section-label">Admin Panel</div>
+                    <a href="#" class="nav-item active" onclick="navigateTo('admin-dashboard')">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#" class="nav-item" onclick="navigateTo('admin-stops')">
+                        <i data-lucide="map-pin"></i>
+                        <span>Bus Stops</span>
+                    </a>
+                    <a href="#" class="nav-item" onclick="navigateTo('admin-routes')">
+                        <i data-lucide="git-commit"></i>
+                        <span>Routes & Buses</span>
+                    </a>
+                    <a href="#" class="nav-item" onclick="navigateTo('admin-data')">
+                        <i data-lucide="upload-cloud"></i>
+                        <span>ML Training & CSV</span>
+                    </a>
+                    <a href="#" class="nav-item" onclick="navigateTo('admin-reports')">
+                        <i data-lucide="file-text"></i>
+                        <span>Reports & Feedback</span>
+                    </a>
+                </div>
+
+                <!-- Passenger Navigation -->
+                <div id="nav-passenger-section" class="nav-section hidden">
+                    <div class="section-label">Passenger Portal</div>
+                    <a href="#" class="nav-item" onclick="navigateTo('passenger-dashboard')">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Passenger Dashboard</span>
+                    </a>
+                    <a href="#" class="nav-item" onclick="navigateTo('passenger-predict')">
+                        <i data-lucide="trending-up"></i>
+                        <span>Predict Occupancy</span>
+                    </a>
+                    <a href="#" class="nav-item" onclick="navigateTo('passenger-stops')">
+                        <i data-lucide="search"></i>
+                        <span>Nearby Bus Stops & Map</span>
+                    </a>
+                    <a href="#" class="nav-item" onclick="navigateTo('passenger-routes')">
+                        <i data-lucide="git-commit"></i>
+                        <span>Routes & Buses</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn-logout" onclick="handleLogout()">
+                    <i data-lucide="log-out"></i>
+                    <span>Log Out</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="content-header">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <button id="sidebar-toggle-btn" class="btn-icon sidebar-toggle-btn" onclick="toggleSidebar()" title="Toggle Sidebar Menu">
+                        <i data-lucide="menu"></i>
+                    </button>
+                    <h1 id="page-title">Dashboard</h1>
+                </div>
+                <div class="header-actions">
+                    <span id="current-time-badge" class="time-badge">10:00 AM</span>
+                </div>
+            </header>
+
+            <div id="content-area" class="content-area">
+                <!-- Dynamically injected panels go here -->
+            </div>
+        </main>
+    </div>
+
+    <!-- ================= MODALS ================= -->
+    
+    <!-- Bus Stop Modal -->
+    <div id="bus-stop-modal" class="modal hidden">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 id="bus-stop-modal-title">Add Bus Stop</h3>
+                <button class="btn-close-modal" onclick="closeModal('bus-stop-modal')">&times;</button>
+            </div>
+            <form id="bus-stop-form" onsubmit="saveBusStop(event)">
+                <input type="hidden" id="stop-id">
+                <div class="form-group">
+                    <label for="stop-name">Bus Stop Name</label>
+                    <input type="text" id="stop-name" placeholder="e.g. Times Square Stop" required>
+                </div>
+                <div class="form-group">
+                    <label>Select Location on Map (Click to Set Coordinates)</label>
+                    <div id="stop-modal-map" style="height: 180px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); margin-bottom: 0.5rem; z-index: 1;"></div>
+                </div>
+                <div class="form-group">
+                    <label for="stop-lat">Latitude</label>
+                    <input type="number" id="stop-lat" step="0.000001" min="-90" max="90" placeholder="e.g. 40.7589" required>
+                </div>
+                <div class="form-group">
+                    <label for="stop-lng">Longitude</label>
+                    <input type="number" id="stop-lng" step="0.000001" min="-180" max="180" placeholder="e.g. -73.9851" required>
+                </div>
+                <div class="form-group">
+                    <label for="stop-capacity">Seating / Standing Capacity</label>
+                    <input type="number" id="stop-capacity" min="5" placeholder="e.g. 50" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('bus-stop-modal')">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Stop</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Route Modal -->
+    <div id="route-modal" class="modal hidden">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 id="route-modal-title">Add Route</h3>
+                <button class="btn-close-modal" onclick="closeModal('route-modal')">&times;</button>
+            </div>
+            <form id="route-form" onsubmit="saveRoute(event)">
+                <input type="hidden" id="route-id">
+                <div class="form-group">
+                    <label for="route-number">Route Number / Code</label>
+                    <input type="text" id="route-number" placeholder="e.g. 101X" required>
+                </div>
+                <div class="form-group">
+                    <label for="route-name">Route Name / Description</label>
+                    <input type="text" id="route-name" placeholder="e.g. Uptown Express Link" required>
+                </div>
+                <div class="form-group">
+                    <label for="route-start-stop">Start Bus Stop</label>
+                    <select id="route-start-stop" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="route-end-stop">End Bus Stop</label>
+                    <select id="route-end-stop" required></select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('route-modal')">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Route</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Feedback Modal -->
+    <div id="feedback-modal" class="modal hidden">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Submit Prediction Feedback</h3>
+                <button class="btn-close-modal" onclick="closeModal('feedback-modal')">&times;</button>
+            </div>
+            <form id="feedback-form" onsubmit="saveFeedback(event)">
+                <input type="hidden" id="feedback-prediction-id">
+                <div class="form-group">
+                    <p class="feedback-desc">Help us improve! How was the actual passenger occupancy compared to our prediction?</p>
+                </div>
+                <div class="form-group">
+                    <label>Actual Occupancy Level</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="actual-occupancy" value="LOW" required>
+                            <span class="level-badge low-badge">Low (0-35%)</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="actual-occupancy" value="MEDIUM">
+                            <span class="level-badge medium-badge">Medium (35-70%)</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="actual-occupancy" value="HIGH">
+                            <span class="level-badge high-badge">High (70%+)</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Accuracy Rating</label>
+                    <div class="star-rating">
+                        <input type="radio" id="star5" name="rating" value="5" required/><label for="star5" title="Excellent"></label>
+                        <input type="radio" id="star4" name="rating" value="4"/><label for="star4" title="Good"></label>
+                        <input type="radio" id="star3" name="rating" value="3"/><label for="star3" title="Average"></label>
+                        <input type="radio" id="star2" name="rating" value="2"/><label for="star2" title="Poor"></label>
+                        <input type="radio" id="star1" name="rating" value="1"/><label for="star1" title="Very Bad"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="feedback-comments">Comments (Optional)</label>
+                    <textarea id="feedback-comments" rows="3" placeholder="Tell us about the conditions (e.g. delayed bus, bad weather)..."></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('feedback-modal')">Cancel</button>
+                    <button type="submit" class="btn-primary">Submit Feedback</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dynamic Stat Details Modal -->
+    <div id="stat-details-modal" class="modal hidden">
+        <div class="modal-card" style="max-width: 680px;">
+            <div class="modal-header">
+                <div style="display:flex; align-items:center; gap:0.75rem;">
+                    <div id="stat-modal-icon-wrapper" class="stat-icon-wrapper" style="width:42px; height:42px;">
+                        <i id="stat-modal-icon" data-lucide="info"></i>
+                    </div>
+                    <div>
+                        <h3 id="stat-modal-title">Metric Details</h3>
+                        <p id="stat-modal-subtitle" style="font-size:0.8rem; color:var(--text-muted);">Detailed System Breakdown</p>
+                    </div>
+                </div>
+                <button class="btn-close-modal" onclick="closeModal('stat-details-modal')">&times;</button>
+            </div>
+            <div id="stat-modal-content" class="stat-modal-body" style="margin-top: 1rem;">
+                <!-- Dynamically populated detail stats -->
+            </div>
+            <div class="modal-actions" style="margin-top: 1.5rem;">
+                <button type="button" class="btn-secondary" onclick="closeModal('stat-details-modal')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App Script -->
+    <script src="js/app.js?v=14"></script>
+</body>
+</html>

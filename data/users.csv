@@ -1,0 +1,21 @@
+user_id,name,email,role,account_status
+U001,Demo User 1,citizen001@synthetic-example.com,CITIZEN,ACTIVE
+U002,Demo User 2,citizen002@synthetic-example.com,CITIZEN,ACTIVE
+U003,Demo User 3,citizen003@synthetic-example.com,CITIZEN,ACTIVE
+U004,Demo User 4,citizen004@synthetic-example.com,CITIZEN,ACTIVE
+U005,Demo User 5,citizen005@synthetic-example.com,CITIZEN,ACTIVE
+U006,Demo User 6,citizen006@synthetic-example.com,CITIZEN,ACTIVE
+U007,Demo User 7,citizen007@synthetic-example.com,CITIZEN,ACTIVE
+U008,Demo User 8,citizen008@synthetic-example.com,CITIZEN,ACTIVE
+U009,Demo User 9,citizen009@synthetic-example.com,CITIZEN,ACTIVE
+U010,Demo User 10,citizen010@synthetic-example.com,CITIZEN,ACTIVE
+U011,Demo User 11,citizen011@synthetic-example.com,CITIZEN,ACTIVE
+U012,Demo User 12,citizen012@synthetic-example.com,CITIZEN,ACTIVE
+U013,Demo User 13,citizen013@synthetic-example.com,CITIZEN,ACTIVE
+U014,Demo User 14,citizen014@synthetic-example.com,CITIZEN,ACTIVE
+U015,Demo User 15,citizen015@synthetic-example.com,CITIZEN,ACTIVE
+U016,Demo User 16,citizen016@synthetic-example.com,CITIZEN,ACTIVE
+U017,Demo User 17,citizen017@synthetic-example.com,CITIZEN,ACTIVE
+U018,Demo User 18,admin01@synthetic-example.com,ADMIN,ACTIVE
+U019,Demo User 19,admin02@synthetic-example.com,ADMIN,ACTIVE
+U020,Demo User 20,admin03@synthetic-example.com,ADMIN,SUSPENDED

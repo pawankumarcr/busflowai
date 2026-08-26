@@ -1,0 +1,51 @@
+bus_stop_id,bus_stop_name,area,latitude,longitude,stop_type,daily_average_passengers,operating_status
+BS001,Synthetic T. Nagar Stop 1,Tambaram,12.949816,80.293917,interchange,1868,ACTIVE
+BS002,Synthetic Adyar Stop 2,Egmore,13.180286,80.255027,interchange,1382,ACTIVE
+BS003,Synthetic Tambaram Stop 3,Anna Nagar,13.092798,80.2879,residential,809,ACTIVE
+BS004,Synthetic Guindy Stop 4,Egmore,13.039463,80.278965,metro,1579,ACTIVE
+BS005,Synthetic Guindy Stop 5,Guindy,12.862407,80.21958,educational,1534,ACTIVE
+BS006,Synthetic Velachery Stop 6,T. Nagar,12.862398,80.284375,metro,748,ACTIVE
+BS007,Synthetic T. Nagar Stop 7,Adyar,12.823233,80.117699,hospital,417,ACTIVE
+BS008,Synthetic Porur Stop 8,Guindy,13.14647,80.139197,educational,1357,ACTIVE
+BS009,Synthetic T. Nagar Stop 9,Tambaram,13.040446,80.109045,interchange,783,ACTIVE
+BS010,Synthetic Egmore Stop 10,T. Nagar,13.083229,80.165066,interchange,763,ACTIVE
+BS011,Synthetic Mylapore Stop 11,Guindy,12.808234,80.177735,educational,2098,ACTIVE
+BS012,Synthetic Adyar Stop 12,T. Nagar,13.187964,80.15427,interchange,1731,ACTIVE
+BS013,Synthetic Adyar Stop 13,Mylapore,13.132977,80.265748,railway,1595,ACTIVE
+BS014,Synthetic T. Nagar Stop 14,Tambaram,12.884936,80.171351,educational,1236,ACTIVE
+BS015,Synthetic Guindy Stop 15,OMR,12.87273,80.156187,metro,1953,ACTIVE
+BS016,Synthetic Guindy Stop 16,Anna Nagar,12.873362,80.208539,educational,1620,ACTIVE
+BS017,Synthetic Porur Stop 17,Velachery,12.921697,80.128185,interchange,663,ACTIVE
+BS018,Synthetic Egmore Stop 18,Anna Nagar,13.009903,80.260439,railway,1391,ACTIVE
+BS019,Synthetic Adyar Stop 19,Anna Nagar,12.972778,80.11491,railway,1736,ACTIVE
+BS020,Synthetic Porur Stop 20,Guindy,12.916492,80.297377,hospital,798,ACTIVE
+BS021,Synthetic Guindy Stop 21,Tambaram,13.044741,80.254449,metro,2260,ACTIVE
+BS022,Synthetic Porur Stop 22,T. Nagar,12.855798,80.139743,commercial,101,ACTIVE
+BS023,Synthetic Mylapore Stop 23,Egmore,12.916858,80.101104,commercial,741,ACTIVE
+BS024,Synthetic Guindy Stop 24,Velachery,12.946545,80.263092,educational,2367,ACTIVE
+BS025,Synthetic OMR Stop 25,Porur,12.982428,80.241371,hospital,1689,ACTIVE
+BS026,Synthetic Egmore Stop 26,Guindy,13.11407,80.245801,residential,954,ACTIVE
+BS027,Synthetic Tambaram Stop 27,Velachery,12.87987,80.254254,educational,1859,ACTIVE
+BS028,Synthetic Adyar Stop 28,OMR,13.005694,80.114809,hospital,1761,ACTIVE
+BS029,Synthetic Velachery Stop 29,Mylapore,13.036966,80.171693,metro,1253,ACTIVE
+BS030,Synthetic Mylapore Stop 30,Tambaram,12.81858,80.123174,metro,1176,ACTIVE
+BS031,Synthetic Anna Nagar Stop 31,Porur,13.043018,80.272621,metro,1807,ACTIVE
+BS032,Synthetic Tambaram Stop 32,Guindy,12.86821,80.22466,metro,1795,ACTIVE
+BS033,Synthetic Velachery Stop 33,Anna Nagar,12.826021,80.16618,metro,1833,ACTIVE
+BS034,Synthetic Guindy Stop 34,Adyar,13.179554,80.112712,hospital,1539,ACTIVE
+BS035,Synthetic Anna Nagar Stop 35,Guindy,13.186253,80.162196,hospital,2394,ACTIVE
+BS036,Synthetic T. Nagar Stop 36,Adyar,13.123359,80.165037,railway,935,ACTIVE
+BS037,Synthetic T. Nagar Stop 37,Anna Nagar,12.921846,80.245921,commercial,302,ACTIVE
+BS038,Synthetic Mylapore Stop 38,Mylapore,12.839069,80.227511,interchange,222,ACTIVE
+BS039,Synthetic T. Nagar Stop 39,Tambaram,13.073693,80.277443,metro,500,ACTIVE
+BS040,Synthetic Anna Nagar Stop 40,T. Nagar,12.976061,80.194443,residential,866,ACTIVE
+BS041,Synthetic Anna Nagar Stop 41,Guindy,12.848815,80.123919,interchange,393,ACTIVE
+BS042,Synthetic Egmore Stop 42,Egmore,12.998071,80.242649,hospital,2427,ACTIVE
+BS043,Synthetic Tambaram Stop 43,Anna Nagar,12.813755,80.252157,residential,297,ACTIVE
+BS044,Synthetic Adyar Stop 44,Guindy,13.163728,80.212255,residential,2030,ACTIVE
+BS045,Synthetic OMR Stop 45,OMR,12.903512,80.254193,residential,2291,ACTIVE
+BS046,Synthetic Porur Stop 46,Mylapore,13.065009,80.198759,railway,708,ACTIVE
+BS047,Synthetic T. Nagar Stop 47,OMR,12.924684,80.204547,hospital,1247,ACTIVE
+BS048,Synthetic Mylapore Stop 48,Velachery,13.008027,80.185508,residential,286,ACTIVE
+BS049,Synthetic T. Nagar Stop 49,Tambaram,13.018684,80.105084,metro,1894,ACTIVE
+BS050,Synthetic Porur Stop 50,Velachery,12.873942,80.121578,educational,759,ACTIVE
