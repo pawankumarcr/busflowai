@@ -229,5 +229,12 @@ public class DatabaseSeeder implements CommandLineRunner {
                 System.err.println("Startup ML training failed: " + e.getMessage());
             }
         }
+
+        System.out.println("\n=================================================================");
+        System.out.println(" 🚀 APPLICATION STARTED SUCCESSFULLY!");
+        System.out.println(" 🌐 ACCESS SITE HERE : http://localhost:8080");
+        System.out.println(" 🗄️ H2 DB CONSOLE    : http://localhost:8080/h2-console");
+        System.out.println("=================================================================\n");
     }
 }
+
